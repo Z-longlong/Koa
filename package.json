@@ -1,0 +1,28 @@
+{
+  "name": "koaserver",
+  "version": "1.0.0",
+  "description": "前端错误上报后台",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "koa",
+    "async"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://gitee.com/gent_zhou/Koa.git"
+  },
+  "author": "zyl",
+  "license": "ISC",
+  "devDependencies": {
+    "koa": "^2.10.0",
+    "koa-bodyparser": "^4.2.1",
+    "koa-router": "^7.4.0",
+    "koa-static": "^5.0.0",
+    "mongodb": "^3.3.3",
+    "mongoose": "^5.7.5",
+    "path": "^0.12.7"
+  }
+}
