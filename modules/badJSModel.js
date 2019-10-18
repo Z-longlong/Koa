@@ -2,6 +2,7 @@ const db = require("../libs/db/db.js");
 
 // 插入数据
 exports._insert = (ctx) => {
+    console.log(ctx.request);
     let {
         errorType,
         msg,
@@ -12,7 +13,8 @@ exports._insert = (ctx) => {
         userBehavior,
         from,
         type,
-        clienttype
+        clienttype,
+        errorURL
     } = ctx.request.query;
     let params = {
         errorType,
@@ -24,12 +26,14 @@ exports._insert = (ctx) => {
         userBehavior,
         from,
         type,
-        clienttype
+        clienttype,
+        errorURL
     };
     db.insertOne("errorInfo", params, function (err) {
         if (!err) {
-            console.log('插入成功');
-            ctx.body = "响应"
+            ctx.body = {
+                status: 200
+            }
         }
     })
 }
