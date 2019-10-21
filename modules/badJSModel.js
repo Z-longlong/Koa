@@ -2,7 +2,19 @@ const db = require("../libs/db/db.js");
 
 // 插入数据
 exports._insert = (ctx) => {
-    console.log(ctx.request);
+    /**
+     * errorType  错误类型
+     * msg  错误信息
+     * errorTime  发生错误时间
+     * filePath 错误资源路径
+     * line  行
+     * col  列
+     * userBehavior  用户行为
+     * from  错误页面
+     * type  错误类型
+     * clienttype  项目类型
+     * errorURL  图片错误路径
+     */
     let {
         errorType,
         msg,
@@ -30,9 +42,12 @@ exports._insert = (ctx) => {
         errorURL
     };
     db.insertOne("errorInfo", params, function (err) {
-        if (!err) {
-            ctx.body = {
-                status: 200
+        if (err) {
+            console.log(err);
+        } else {
+            ctx.request.body = {
+                status: 200,
+                msg: 'success'
             }
         }
     })
