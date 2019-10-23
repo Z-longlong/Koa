@@ -1,7 +1,7 @@
 const db = require("../libs/db/db.js");
 
 // 插入数据
-exports._insert = (ctx) => {
+exports._insert = async (ctx, next) => {
     /**
      * errorType  错误类型
      * msg  错误信息
@@ -45,10 +45,37 @@ exports._insert = (ctx) => {
         if (err) {
             console.log(err);
         } else {
-            ctx.request.body = {
+            ctx.response.body = {
                 status: 200,
                 msg: 'success'
             }
         }
     })
+    await next();
+}
+
+exports._getErrorInfo = async (ctx, next) => {
+    console.log(ctx);
+    let {
+        type
+    } = ctx.request.query;
+    let params = {
+        type
+    };
+    db.find("errorInfo", {
+        where: {
+            type: params.type
+        }
+    }, (err, data) => {
+        if (err) {
+            console.log(err)
+        } else {
+            ctx.res.body = {
+                status: 200,
+                msg: 'success',
+                data: data
+            }
+        }
+    })
+    await next();
 }

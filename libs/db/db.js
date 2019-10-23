@@ -2,7 +2,8 @@ const mongodb = require("mongodb");
 const MongoClient = mongodb.MongoClient;
 const ObjectId = mongodb.ObjectId;
 
-const url = "mongodb://admin:nihao123@172.17.0.65:27017/badjs";
+// const url = "mongodb://admin:nihao123@192.168.80.10:27017/badjs"; //线上地址
+const url = "mongodb://localhost:27017/badjs"; //线下地址
 
 //连接数据库
 function connect(backFn) {

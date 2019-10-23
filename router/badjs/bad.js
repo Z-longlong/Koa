@@ -2,8 +2,10 @@
 const router = require('koa-router')();
 const errorInfo = require("../../modules/badJSModel.js");
 
-
 // 上报错误信息
 router.get("/error", errorInfo._insert);
 
-module.exports = router.routes();
+// 获取错误信息
+router.get("/errorInfo", errorInfo._getErrorInfo);
+
+module.exports = router;
