@@ -24,5 +24,8 @@
     "mongodb": "^3.3.3",
     "mongoose": "^5.7.5",
     "path": "^0.12.7"
+  },
+  "dependencies": {
+    "koa2-cors": "^2.0.6"
   }
 }

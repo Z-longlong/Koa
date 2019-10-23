@@ -41,41 +41,48 @@ exports._insert = async (ctx, next) => {
         clienttype,
         errorURL
     };
-    db.insertOne("errorInfo", params, function (err) {
-        if (err) {
-            console.log(err);
-        } else {
-            ctx.response.body = {
-                status: 200,
-                msg: 'success'
+    await new Promise((reslove, reject) => {
+        db.insertOne("errorInfo", params, function (err) {
+            if (err) {
+                console.log(err);
+                reject()
+            } else {
+                reslove()
             }
-        }
+        })
     })
-    await next();
+    ctx.body = {
+        status: 200,
+        msg: 'insert success'
+    }
 }
 
 exports._getErrorInfo = async (ctx, next) => {
-    console.log(ctx);
     let {
         type
     } = ctx.request.query;
     let params = {
         type
     };
-    db.find("errorInfo", {
-        where: {
-            type: params.type
-        }
-    }, (err, data) => {
-        if (err) {
-            console.log(err)
-        } else {
-            ctx.res.body = {
-                status: 200,
-                msg: 'success',
-                data: data
+    let result;
+    await new Promise((reslove, reject) => {
+        db.find("errorInfo", {
+            where: {
+                type: params.type
             }
-        }
+        }, (err, data) => {
+            if (err) {
+                console.log(err);
+                reject(err)
+            } else {
+                result = data;
+                reslove()
+            }
+        })
     })
-    await next();
+    ctx.body = {
+        status: 200,
+        msg: 'success',
+        data: result
+    }
 }

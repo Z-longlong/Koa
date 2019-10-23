@@ -115,7 +115,10 @@ exports.findById = function (collectionName, id, callback) {
 	})
 }
 /*
- * 用于短租项目的类别商铺
+ * findTypeById
+ * collectionName:集合名称
+ * typeId:被查询项的typeid
+ * callback:数据查询成功后的回调函数；
  */
 exports.findTypeById = function (collectionName, id, callback) {
 	connect(function (dbase) {
