@@ -2,7 +2,7 @@ const mongodb = require("mongodb");
 const MongoClient = mongodb.MongoClient;
 const ObjectId = mongodb.ObjectId;
 
-const url = "mongodb://172.17.0.65:27017/badjs";
+const url = "mongodb://admin:nihao123@172.17.0.65:27017/badjs";
 
 //连接数据库
 function connect(backFn) {

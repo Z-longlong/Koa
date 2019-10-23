@@ -34,4 +34,3 @@ app.use(router.allowedMethods());
 
 // 在端口3000监听:
 app.listen(3001);
-console.log('app started at port 3000...');
