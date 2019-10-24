@@ -67,9 +67,10 @@ exports._getErrorInfo = async (ctx, next) => {
     let result;
     await new Promise((reslove, reject) => {
         db.find("errorInfo", {
-            where: {
+            where: params.type ? {
                 type: params.type
-            }
+            } : "type>0"
+
         }, (err, data) => {
             if (err) {
                 console.log(err);
