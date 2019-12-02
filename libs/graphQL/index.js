@@ -18,7 +18,7 @@ const RootQuery = new GraphQLObjectType({
                 }
             },
             resolve(parent, args) {
-                return Gadget.findById(args.id)
+                return Gadget.findById(args.id);
             }
         }
     }
