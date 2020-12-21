@@ -15,34 +15,10 @@ exports._insert = async (ctx, next) => {
      * clienttype  项目类型
      * errorURL  图片错误路径
      */
-    let {
-        errorType,
-        msg,
-        errorTime,
-        filePath,
-        line,
-        col,
-        userBehavior,
-        from,
-        type,
-        clienttype,
-        errorURL
-    } = ctx.request.query;
-    let params = {
-        errorType,
-        msg,
-        errorTime,
-        filePath,
-        line,
-        col,
-        userBehavior,
-        from,
-        type,
-        clienttype,
-        errorURL
-    };
+    let { errorType, msg, errorTime, filePath, line, col, userBehavior, from, type, clienttype, errorURL } = ctx.request.query;
+    let params = { errorType, msg, errorTime, filePath, line, col, userBehavior, from, type, clienttype, errorURL };
     await new Promise((reslove, reject) => {
-        db.insertOne("errorInfo", params, function (err) {
+        db.insertOne("errorInfo", params, function(err) {
             if (err) {
                 console.log(err);
                 reject()
@@ -58,12 +34,8 @@ exports._insert = async (ctx, next) => {
 }
 
 exports._getErrorInfo = async (ctx, next) => {
-    let {
-        type
-    } = ctx.request.query;
-    let params = {
-        type
-    };
+    let { type } = ctx.request.query;
+    let params = { type };
     let result;
     await new Promise((reslove, reject) => {
         db.find("errorInfo", {
